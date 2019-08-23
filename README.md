@@ -2,6 +2,18 @@
 
 300 行代码提炼 spring 核心原理
 
+<p align="center">
+	<a target="_blank" href="https://github.com/leishiguang/spring-framework-mini/blob/master/LICENSE">
+		<img src="https://img.shields.io/apm/l/vim-mode.svg?color=yellow" ></img>
+	</a>
+	<a target="_blank" href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">
+		<img src="https://img.shields.io/badge/JDK-1.8+-green.svg" ></img>
+	</a>
+</p>
+
+------------------
+
+
 ### 构建方式
 
 1. 导入 build.gradle 工程；
