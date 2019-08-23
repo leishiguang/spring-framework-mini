@@ -19,6 +19,9 @@
 
 ### 原理解析
 
+目录结构
+
+```
 src/main
 ├─java
 │  └─simplified
@@ -48,3 +51,4 @@ src/main
 └─webapp
     └─WEB-INF
             web.xml
+```
