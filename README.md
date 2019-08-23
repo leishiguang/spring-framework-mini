@@ -15,8 +15,36 @@
 
 如图所示：
 
-![image](https://github.com/leishiguang/spring-framework-mini/docs/images/helloWorld.png)
+![image](https://raw.githubusercontent.com/leishiguang/spring-framework-mini/master/docs/images/helloWorld.png)
 
 ### 原理解析
 
-
+src/main
+├─java
+│  └─simplified
+│      └─spring
+│          ├─annotation 注解支持
+│          │      Autowired.java 
+│          │      Controller.java
+│          │      RequestMapping.java
+│          │      RequestParam.java
+│          │      Service.java
+│          │
+│          ├─controller 
+│          │      DemoController.java 演示用的Controller
+│          │
+│          ├─service
+│          │  │  DemoService.java 演示用的Service
+│          │  │
+│          │  └─impl
+│          │          DemoServiceImpl.java 演示用的Service实现
+│          │
+│          └─servlet
+│                  DispatcherServlet.java Servlet入口
+│
+├─resources
+│      application.properties
+│
+└─webapp
+    └─WEB-INF
+            web.xml
