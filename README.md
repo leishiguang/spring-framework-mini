@@ -1,8 +1,6 @@
 ## 手写简化版 spring framework
-
 300 行代码提炼 spring 核心原理
-
-<p align="center">
+<p>
 	<a target="_blank" href="https://github.com/leishiguang/spring-framework-mini/blob/master/LICENSE">
 		<img src="https://img.shields.io/apm/l/vim-mode.svg?color=yellow" ></img>
 	</a>
@@ -11,8 +9,7 @@
 	</a>
 </p>
 
-------------------
-
+---
 
 ### 构建方式
 
@@ -31,7 +28,9 @@
 
 ### 原理解析
 
-目录结构
+（完善中……）
+
+### 目录结构
 
 ```
 src/main
@@ -64,3 +63,5 @@ src/main
     └─WEB-INF
             web.xml
 ```
+
+最后祝大家生活愉快~
