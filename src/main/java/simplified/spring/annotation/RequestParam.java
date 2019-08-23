@@ -3,7 +3,7 @@ package simplified.spring.annotation;
 import java.lang.annotation.*;
 
 /**
- * PequestParam注解支持
+ * RequestParam注解支持
  *
  * @author leishiguang
  * @since v1.0
