@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.*;
 
 /**
- * 初始化的入口
+ * Servlet 初始化入口
  *
  * @author leishiguang
  * @since v1.0
@@ -42,12 +42,17 @@ public class DispatcherServlet extends HttpServlet {
 	private Map<String, Object> ioc = new HashMap<>();
 
 	/**
-	 * 保存 url 和 Method 的对应关系
+	 * 保存 url -> Method 的对应关系
 	 */
 	private Map<String, Object> handlerMapping = new HashMap<>();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		this.doPost(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		try {
 			doDispatch(req, resp);
 		} catch (Exception e) {
@@ -57,21 +62,16 @@ public class DispatcherServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		this.doGet(req, resp);
-	}
-
-	@Override
 	public void init(ServletConfig config){
-		// 加载配置文件
+		//加载配置文件
 		doLoadConfig(config.getInitParameter("contextConfigLocation"));
-		// 扫描相关类
+		//扫描相关类
 		doScanner(contextConfig.getProperty("scanPackage"));
-		// 初始化扫描到的类，把他们放入 Ioc 容器中
+		//初始化扫描到的类，把他们放入 Ioc 容器中
 		doInstance();
-		// 完成依赖注入
+		//完成依赖注入
 		doAutowired();
-		// 初始化 HandlerMapping
+		//初始化 HandlerMapping
 		initHandlerMapping();
 		System.out.println("Mini Spring Framework is init.");
 	}
@@ -86,7 +86,7 @@ public class DispatcherServlet extends HttpServlet {
 		}
 		Method method = (Method) this.handlerMapping.get(url);
 		Map<String, String[]> params = req.getParameterMap();
-		String beanName = toLowerFirseCase(method.getDeclaringClass().getSimpleName());
+		String beanName = toLowerFirstCase(method.getDeclaringClass().getSimpleName());
 		Object object = ioc.get(beanName);
 		method.invoke(object, req, resp, params.get("name")[0]);
 	}
@@ -98,8 +98,8 @@ public class DispatcherServlet extends HttpServlet {
 	 * @param contextConfigLocation contextConfigLocation
 	 */
 	private void doLoadConfig(String contextConfigLocation) {
-		// 直接通过类路径，找到 Spring 主配置文件所在路径
-		// 将其读取出来，并放到 Properties 中
+		//直接通过类路径，找到 Spring 主配置文件所在路径
+		//将其读取出来，并放到 Properties 中
 		try (InputStream fis = this.getClass().getClassLoader().getResourceAsStream(contextConfigLocation)) {
 			if (fis == null) {
 				throw new NullPointerException("读取配置不能为空");
@@ -153,15 +153,15 @@ public class DispatcherServlet extends HttpServlet {
 				} catch (InstantiationException | IllegalAccessException e) {
 					e.printStackTrace();
 				}
-				// bean的命名格式以小写开头
-				String beanName = toLowerFirseCase(clazz.getSimpleName());
+				//bean的命名格式以小写开头
+				String beanName = toLowerFirstCase(clazz.getSimpleName());
 				ioc.put(beanName, instance);
 			} else if (clazz.isAnnotationPresent(Service.class)) {
-				// 自定义bean名称
+				//自定义bean名称
 				Service service = clazz.getAnnotation(Service.class);
 				String beanName = service.value();
 				if ("".equals(beanName)) {
-					beanName = toLowerFirseCase(clazz.getSimpleName());
+					beanName = toLowerFirstCase(clazz.getSimpleName());
 				}
 				Object instance = null;
 				try {
@@ -170,12 +170,12 @@ public class DispatcherServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 				ioc.put(beanName, instance);
-				// 根据类型自动赋值
+				//根据类型自动赋值
 				for (Class<?> i : clazz.getInterfaces()) {
 					if (ioc.containsKey(i.getName())) {
 						throw new RuntimeException("The '" + i.getName() + "' is exists!");
 					}
-					// 把接口的类型直接当成key
+					//把接口的类型直接当成key
 					ioc.put(i.getName(), instance);
 				}
 			}
@@ -186,9 +186,9 @@ public class DispatcherServlet extends HttpServlet {
 	 * 首字母小写
 	 *
 	 * @param simpleName 首字母要变成小写的字符
-	 * @return 首字母小写
+	 * @return 首字母转为小写
 	 */
-	private String toLowerFirseCase(String simpleName) {
+	private String toLowerFirstCase(String simpleName) {
 		char[] chars = simpleName.toCharArray();
 		chars[0] = Character.toLowerCase(chars[0]);
 		return String.valueOf(chars);
@@ -200,8 +200,8 @@ public class DispatcherServlet extends HttpServlet {
 	private void doAutowired() {
 		assert ioc.size() != 0;
 		for (Map.Entry<String, Object> entry : ioc.entrySet()) {
-			// 获取所有的字段，包括 private、protected、public 类型的
-			// 正常来讲，普通的 OOP 编程只能获得 public 类型的字段
+			//获取所有的字段，包括 private、protected、public 类型的
+			//正常来讲，普通的 OOP 编程只能获得 public 类型的字段
 			Field[] fields = entry.getValue().getClass().getDeclaredFields();
 			for (Field field : fields) {
 				if (!field.isAnnotationPresent(Autowired.class)) {
@@ -211,8 +211,8 @@ public class DispatcherServlet extends HttpServlet {
 				//如果用户没有自定义 beanName，默认就根据类型注入
 				String beanNeme = autowired.value();
 				if ("".equals(beanNeme)) {
-					// 这儿的 beanName 是接口类的名字
-					beanNeme = toLowerFirseCase(field.getType().getName());
+					//这儿的 beanName 是接口类的名字
+					beanNeme = toLowerFirstCase(field.getType().getName());
 				}
 				//如果是public以外的类型，只要加了 @Autowired 注解都要强制赋值
 				field.setAccessible(true);
@@ -241,7 +241,7 @@ public class DispatcherServlet extends HttpServlet {
 				RequestMapping requestMapping = clazz.getAnnotation(RequestMapping.class);
 				baseUrl = requestMapping.value();
 			}
-			// 默认获取所有的 public 类型的方法
+			//默认获取所有的 public 类型的方法
 			for (Method method : clazz.getMethods()) {
 				if (!method.isAnnotationPresent(RequestMapping.class)) {
 					continue;
