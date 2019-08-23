@@ -1,6 +1,6 @@
-package simplified.spring.servlet;
+package mini.spring.servlet;
 
-import simplified.spring.annotation.*;
+import mini.spring.annotation.*;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServlet;

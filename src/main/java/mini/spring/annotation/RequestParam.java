@@ -1,16 +1,16 @@
-package simplified.spring.annotation;
+package mini.spring.annotation;
 
 import java.lang.annotation.*;
 
 /**
- * Service注解支持
+ * RequestParam注解支持
  *
  * @author leishiguang
  * @since v1.0
  */
-@Target({ElementType.TYPE})
+@Target({ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Service {
+public @interface RequestParam {
 	String value() default "";
 }

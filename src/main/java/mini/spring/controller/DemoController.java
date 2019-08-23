@@ -1,10 +1,10 @@
-package simplified.spring.controller;
+package mini.spring.controller;
 
-import simplified.spring.annotation.Autowired;
-import simplified.spring.annotation.Controller;
-import simplified.spring.annotation.RequestMapping;
-import simplified.spring.annotation.RequestParam;
-import simplified.spring.service.DemoService;
+import mini.spring.annotation.Autowired;
+import mini.spring.annotation.Controller;
+import mini.spring.annotation.RequestMapping;
+import mini.spring.annotation.RequestParam;
+import mini.spring.service.DemoService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

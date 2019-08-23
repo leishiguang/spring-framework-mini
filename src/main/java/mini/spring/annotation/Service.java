@@ -1,16 +1,16 @@
-package simplified.spring.annotation;
+package mini.spring.annotation;
 
 import java.lang.annotation.*;
 
 /**
- * Autowired注解支持
+ * Service注解支持
  *
  * @author leishiguang
  * @since v1.0
  */
-@Target({ElementType.FIELD})
+@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Autowired {
+public @interface Service {
 	String value() default "";
 }

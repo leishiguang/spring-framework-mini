@@ -5,7 +5,7 @@
 	<display-name>Demo Web Application</display-name>
 	<servlet>
 		<servlet-name>demoMvc</servlet-name>
-		<servlet-class>simplified.spring.servlet.DispatcherServlet</servlet-class>
+		<servlet-class>mini.spring.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>application.properties</param-value>

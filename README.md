@@ -1,6 +1,6 @@
 ## 300 行代码提炼 spring 核心原理
 
-更深入了解 spring 原理：**[spring-framework-simplified](https://github.com/leishiguang/spring-framework-simplified)**
+更深入了解 spring 原理：**[spring-framework-mini](https://github.com/leishiguang/spring-framework-simplified)**
 
 <p>
 	<a target="_blank" href="https://github.com/leishiguang/spring-framework-mini/blob/master/LICENSE">
@@ -48,14 +48,14 @@
 
 当然，真正的 Spring 要复杂许多，这儿主要是了解 Spring 的基本设计思路，以及设计模式的应用。
 
-更深入了解 spring 原理：**[spring-framework-simplified](https://github.com/leishiguang/spring-framework-simplified)**
+更深入了解 spring 原理：**[spring-framework-mini](https://github.com/leishiguang/spring-framework-simplified)**
 
 ### 目录结构
 
 ```
 src/main
 ├─java
-│  └─simplified
+│  └─mini
 │      └─spring
 │          ├─annotation 注解支持
 │          │      Autowired.java 

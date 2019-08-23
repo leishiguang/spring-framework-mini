@@ -1,7 +1,7 @@
-package simplified.spring.service.impl;
+package mini.spring.service.impl;
 
-import simplified.spring.annotation.Service;
-import simplified.spring.service.DemoService;
+import mini.spring.annotation.Service;
+import mini.spring.service.DemoService;
 
 /**
  * DemoServiceImpl

@@ -1,16 +1,16 @@
-package simplified.spring.annotation;
+package mini.spring.annotation;
 
 import java.lang.annotation.*;
 
 /**
- * RequestMapping注解支持
+ * Controller注解支持
  *
  * @author leishiguang
  * @since v1.0
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface RequestMapping {
+public @interface Controller {
 	String value() default "";
 }

@@ -3,7 +3,7 @@ plugins {
     id 'war'
 }
 
-group 'simplified.spring'
+group 'mini.spring'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
