@@ -1,6 +1,6 @@
-## 300 行代码提炼 spring 核心原理
+## 300 行代码提炼 spring framework 核心原理
 
-更深入了解 spring 原理：**[spring-framework-mini](https://github.com/leishiguang/spring-framework-simplified)**
+更深入了解 spring framework 原理：**[spring-framework-simplified](https://github.com/leishiguang/spring-framework-simplified)**
 
 <p>
 	<a target="_blank" href="https://github.com/leishiguang/spring-framework-mini/blob/master/LICENSE">
@@ -46,9 +46,9 @@
 5. 反射执行 Handler 中保存的方法，获得返回值；
 6. resp 写出返回值，完成请求；
 
-当然，真正的 Spring 要复杂许多，这儿主要是了解 Spring 的基本设计思路，以及设计模式的应用。
+当然，真正的 spring framework 要复杂许多，这儿主要是了解 spring 的基本设计思路，以及设计模式的应用。
 
-更深入了解 spring 原理：**[spring-framework-mini](https://github.com/leishiguang/spring-framework-simplified)**
+更深入了解 spring framework 原理：**[spring-framework-simplified](https://github.com/leishiguang/spring-framework-simplified)**
 
 ### 目录结构
 
