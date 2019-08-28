@@ -1,6 +1,6 @@
 ## 300 行代码提炼 spring framework 核心原理
 
-本项目包含 IoC、DI、MVC 模块
+本项目包含 IoC、DI、MVC 模块，
 另有姊妹篇 **[spring-framework-simplified](https://github.com/leishiguang/spring-framework-simplified)** 对 beanFactory、HandlerMapper、动态视图解析、AOP 有更深入的解析
 
 <p>
